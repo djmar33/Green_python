@@ -1,31 +1,54 @@
-ten_things = "Apples Oranges Crows Telephone Light Sugar"
-#修复没有10个东西的列表
-print("Wait there\'s not 10 things in that list,let\'s fix that.")
-#使用split()函数，将ten_things分割成字符串数组，并赋值给stuff；
-stuff = ten_things.split(' ')
+#################
+# 习题39:可爱的字典
+#################
+# 前言
+#
+# 区别列表和字典：
+# 1.列表：['apple', 'orange'],只可以用数字来索引元素
+# 2.字典：{'name': xue, 'age': 22}，不仅可以通过数字索引，还可以通过字符串索引,
+#   可以把字典当做“查询表”
+states = {
+    'Oregon': 'OR',
+    'Florida': 'FL',
+    'California': 'CA',
+    'New York': 'NY',
+    'Michigan': 'MI'
+    }
 
-more_stuff = ["Day","Night","Song","Frisbee","Corn","Banana","Girl","Boy"]
-#进入while循环，stuff长度不等于10，就进入循环，如果大于10将退出循环；
-while len(stuff) != 10:
-	#使用pop()函数，删除more_stuff列表中最后一个元素。括号里没有参数表示最后一位；
-    next_one = more_stuff.pop()
-    print("Adding: ",next_one)
-    #stuff添加移除的元素，列表总长度+1；
-    stuff.append(next_one)
-    print("There\'s %d items now." % len(stuff))
+cities = {
+    'CA':'San Francisco',
+    'MI':'Detroit',
+    'FL':'Jacksonville'
+    }
 
-print("There we go: ",stuff)
+print("-" * 10)
 
-print("Let\'s do some things with stuff.")
+cities['NY'] = 'New York'
+cities['OR'] = 'Portland'
 
-#输出stuff第二个元素，因为索引是从0开始，1表示第二个元素；
-print(stuff[1])
-#输出stuff最后一个元素；
-print(stuff[-1])
-#删除最后一个元素；
-print(stuff.pop())
-#列表每个元素中间增加‘ ’空格；
-print(' '.join(stuff))
-#在stuff列表3-5（不包含5，需要减1），所以是3-4元素之间增加#符号；
-print('#'.join(stuff[3:5]))
+#print Detroit
+print("Michigan\'s abbreviation is: ", cities[states['Michigan']])
+#print Jacksonville
+print("Florida has: ", cities[states['Florida']])
 
+print("-" * 10)
+#循环遍历states字典，让state,abbrev赋值字典所有key,value参数；
+for state, abbrev in states.items():
+    print("%s is abbreviated %s" % (state, abbrev))
+
+print("-" * 10)
+#循环遍历cities字典，让abbrev,city赋值字典所有key,value参数；
+for abbrev, city in cities.items():
+    print("%s has the city %s" % (abbrev, city))
+
+
+print("-" * 10)
+#.get语法判断states是否包含texas值，如果没有将返回None；
+state = states.get('Texas', None)
+
+if not state:
+    print("Sorry,no Texas")
+    
+#.get语法判断cities是否包含TX值，如果没有将返回None；
+city = cities.get('TX', 'Does Not Exist')
+print("The city for the state 'TX' is %s" % city)
