@@ -1,3 +1,7 @@
+#################
+# 习题38:列表的操作
+#################
+
 ten_things = "Apples Oranges Crows Telephone Light Sugar"
 #修复没有10个东西的列表
 print("Wait there\'s not 10 things in that list,let\'s fix that.")
